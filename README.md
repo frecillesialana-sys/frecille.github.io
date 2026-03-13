@@ -1,1 +1,476 @@
 # frecille.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frecille Tosing Sialana | Real Estate Admin Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2c3e50; /* Professional Navy */
+            --accent-color: #3498db; /* Trustworthy Blue */
+            --bg-light: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --max-width: 1100px;
+            --spacing: 80px;
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+ 
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+ 
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
+        section {
+            padding: var(--spacing) 0;
+        }
+ 
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+ 
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin-top: 10px;
+        }
+ 
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+ 
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+ 
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+ 
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+ 
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+ 
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+ 
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding-top: 70px;
+        }
+ 
+        .hero-content {
+            max-width: 600px;
+        }
+ 
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+ 
+        .hero h3 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+ 
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+ 
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            font-weight: 600;
+        }
+ 
+        .btn:hover {
+            background: var(--accent-color);
+        }
+ 
+        /* --- ABOUT & SUMMARY --- */
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+        }
+ 
+        /* --- EXPERIENCE --- */
+        .timeline-item {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+ 
+        .timeline-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            position: absolute;
+            left: -7px;
+            top: 0;
+        }
+ 
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+ 
+        .company {
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+        }
+ 
+        .date {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+ 
+        .job-details li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 20px;
+        }
+ 
+        .job-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+ 
+        /* --- SKILLS GRID --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+ 
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+ 
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+ 
+        .tag {
+            background: var(--bg-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            border: 1px solid #e0e0e0;
+        }
+ 
+        /* --- PORTFOLIO --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+ 
+        .portfolio-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+ 
+        .portfolio-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+ 
+        .portfolio-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+ 
+        /* --- CERTIFICATIONS & EDUCATION --- */
+        .cert-list, .edu-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+ 
+        .cert-item, .edu-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 5px;
+        }
+ 
+        .cert-item h4, .edu-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+ 
+        .cert-item span, .edu-item span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+ 
+        /* --- CONTACT --- */
+        .contact-section {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+ 
+        .contact-section h2 {
+            color: var(--white);
+        }
+        
+        .contact-section h2::after {
+            background: var(--white);
+        }
+ 
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+ 
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+ 
+        .contact-item a {
+            color: var(--white);
+            font-weight: 600;
+            margin-top: 5px;
+        }
+ 
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+ 
+        /* --- FOOTER --- */
+        footer {
+            background: #1a252f;
+            color: #7f8c8d;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+ 
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; } /* Simplified for demo, ideally hamburger menu */
+            .contact-info { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+ 
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Frecille Tosing Sialana</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+ 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Real Estate Administrative Assistant</h1>
+                <h3>Detail-Oriented | Organized | Efficient</h3>
+                <p>Specializing in mortgage documentation, CRM management, and operational support for real estate firms. Ready to streamline your business operations.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+                <a href="#" class="btn" style="background: transparent; color: var(--primary-color); border: 1px solid var(--primary-color); margin-left: 10px;">Download Resume</a>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Professional Profile</h2>
+            <div class="about-text">
+                <p>As an experienced Administrative Assistant in the real estate industry, I specialize in providing organized and efficient administrative support. I am skilled in managing loan documentation, maintaining accurate records, supporting legal and compliance processes, and assisting clients throughout the application process.</p>
+                <br>
+                <p>My ability to work under pressure, attention to detail, and technical proficiency allow me to streamline administrative workflows and contribute to smooth business operations. I am eager to bring my expertise to international teams and virtual assistant roles.</p>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Experience Section -->
+    <section id="experience" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2>Work Experience</h2>
+            
+            <div class="timeline-item">
+                <div class="job-title">Administrative Assistant</div>
+                <span class="company">BRIA Homes, Inc.</span>
+                <span class="date">February 2021 – Present</span>
+                <ul class="job-details">
+                    <li>Assist in processing mortgage and housing loan applications.</li>
+                    <li>Gather and review documents such as income verification, credit reports, and property appraisals.</li>
+                    <li>Maintain and organize loan files ensuring documentation is complete and compliant with regulatory requirements.</li>
+                    <li>Enter and update loan data in CRM and loan management systems (Odoo).</li>
+                    <li>Provide customer service by answering client inquiries and guiding them through the loan application process.</li>
+                    <li>Generate loan pipeline and status reports to support operational decisions.</li>
+                    <li>Support legal case management by gathering buyer complaint details and preparing incident reports.</li>
+                    <li>Attend hearings and coordinate documentation with regulatory agencies.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Administrative & Technical</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Data Entry</span>
+                        <span class="tag">File Management</span>
+                        <span class="tag">Report Preparation</span>
+                        <span class="tag">Calendar Management</span>
+                        <span class="tag">Microsoft Office Suite</span>
+                        <span class="tag">CRM Systems</span>
+                        <span class="tag">Odoo</span>
+                        <span class="tag">SAP (Basic to Advanced)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Professional Skills</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Attention to Detail</span>
+                        <span class="tag">Problem Solving</span>
+                        <span class="tag">Effective Communication</span>
+                        <span class="tag">Client Communication</span>
+                        <span class="tag">Inquiry Handling</span>
+                        <span class="tag">Ability to Work Under Pressure</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Legal & Compliance</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Case Documentation</span>
+                        <span class="tag">Incident Report Prep</span>
+                        <span class="tag">Complaint Documentation</span>
+                        <span class="tag">Case Management Support</span>
+                        <span class="tag">Regulatory Coordination</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Portfolio Section -->
+    <section id="portfolio" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2>Portfolio Highlights</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <h4>Loan Documentation Management</h4>
+                    <p>Expertly organizing and verifying client mortgage documentation to ensure accuracy and compliance with strict regulatory standards.</p>
+                </div>
+                <div class="portfolio-card">
+                    <h4>Administrative Reporting</h4>
+                    <p>Preparing detailed loan status and pipeline reports to help management monitor progress, performance, and operational bottlenecks.</p>
+                </div>
+                <div class="portfolio-card">
+                    <h4>Customer Support Assistance</h4>
+                    <p>Helping clients understand complex loan requirements and guiding them smoothly through the entire application process.</p>
+                </div>
+                <div class="portfolio-card">
+                    <h4>Case Management Support</h4>
+                    <p>Assisting legal
+
